@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PostController extends Controller
 {
@@ -52,6 +53,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
+        toast('Your Post as been submited!','success');
         Post::create(['title' => $request->title, 'user_id' => auth()->id()]);
         return redirect()->route('posts.index');
     }
@@ -62,9 +64,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
         //
+        Alert::success('Success Title', 'Success Message');
+        return view('posts.show', compact('post'));
     }
 
     /**
@@ -101,9 +105,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
         //
+        $post->delete();
+//        alert()->success('Title','Lorem Lorem Lorem');
+        return back()->with('success', 'The post was delete success');
     }
 
     public function testPermission(){

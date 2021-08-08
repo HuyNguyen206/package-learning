@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravelista\Comments\Commenter;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\File;
@@ -16,7 +17,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements HasMedia
 {
-    use Notifiable, LogsActivity, HasRoles, HasMediaTrait;
+    use Notifiable, LogsActivity, HasRoles, HasMediaTrait, Commenter;
 
     protected $exportColumns = [
         ['data' => 'name', 'title' => 'Name'],

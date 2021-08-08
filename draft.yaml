@@ -1,0 +1,27 @@
+models:
+  City:
+    title: string:400
+    content: longtext
+    user_id: id:user
+    published_at: nullable timestamp
+
+controllers:
+  City:
+    create:
+       render: city.create
+    index:
+      query: all
+      render: city.index with:cities
+
+    show:
+      render: city.show with:city
+
+    store:
+      validate: title, content
+      save: city
+      send: ReviewNotification to:city.user with:city
+      dispatch: SyncMedia with:city
+      fire: NewCity with:city
+      flash: city.title
+      redirect: city.index
+

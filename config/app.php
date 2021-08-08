@@ -53,7 +53,7 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
-
+    'short_url' => explode('://', env('APP_URL'))[1],
     'asset_url' => env('ASSET_URL', null),
 
     /*
@@ -174,6 +174,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\CanvasServiceProvider::class,
         App\Providers\TelescopeServiceProvider::class,
 
     ],

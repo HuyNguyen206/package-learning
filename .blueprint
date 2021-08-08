@@ -1,0 +1,7 @@
+created: 'app/Http/Controllers/CityController.php database/factories/CityFactory.php database/migrations/2021_07_06_114336_create_cities_table.php app/City.php tests/Feature/Http/Controllers/CityControllerTest.php resources/views/city/create.blade.php'
+updated: routes/web.php
+models:
+    Category: { title: string, description: text }
+    City: { title: 'string:400', content: text, user_id: 'biginteger unsigned', published_at: 'datetime nullable' }
+    Post: { user_id: 'biginteger unsigned nullable', title: 'string nullable' }
+    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string:100 nullable', is_admin: 'boolean default:0', current_using_avatar_id: 'biginteger unsigned nullable' }
